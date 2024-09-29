@@ -14,18 +14,18 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
+  id         String      @id @default(uuid())
   name       String
-  phone      Int      @unique
-  role       String
-  address    String
+  phone      String      @unique
+  role       String?
+  address    String?
   reviews    Review[]
   orders     Order[]
   created_at DateTime @default(now())
 }
 
 model Product {
-  id                Int      @id @default(autoincrement())
+  id                String      @id @default(uuid())
   name              String
   category          String
   price             Int
@@ -39,32 +39,32 @@ model Product {
 
 model Review {
   id          Int      @id @default(autoincrement())
-  user        User     @relation(fields: [user_id], references: [id])
-  user_id     Int
-  product     Product  @relation(fields: [product_id], references: [id])
-  product_id  Int
+  user        User     @relation(fields: [user_id], references: [id] , onDelete: Cascade)
+  user_id     String
+  product     Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  product_id  String
   review_text String
   created_at  DateTime @default(now())
 }
 
 model Order {
-  id         Int     @id @default(autoincrement())
-  user       User    @relation(fields: [user_id], references: [id])
-  user_id    Int
-  product    Product @relation(fields: [product_id], references: [id])
-  product_id Int
+  id         String     @id @default(uuid())
+  user       User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id    String
+  product    Product @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  product_id String
   status     String
-  coupon     Coupon  @relation(fields: [coupon_id], references: [id])
-  coupon_id  Int
+  coupon     Coupon  @relation(fields: [coupon_id], references: [id], onDelete: Cascade)
+  coupon_id  String
   created_at  DateTime @default(now())
 }
 
 model Coupon {
-  id            Int    @id @default(autoincrement())
+  id            String    @id @default(uuid())
   name          String
-  discount      Int
-  discount_type Int
-  nim_amount    Int
+  discount      String
+  discount_type String
+  min_amount    Int
   orders        Order[]
   created_at  DateTime @default(now())
 }
