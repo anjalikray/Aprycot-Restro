@@ -1,15 +1,13 @@
-
-import './App.css'
+import {Routes , Route} from 'react-router-dom'
+import Signin from './components/Signin'
 
 function App() {
 
   return (
     <>
-      <div>
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-      </div>
+      <Routes>
+        <Route path='/' element={<Signin/>} />
+      </Routes>
     </>
   )
 }
