@@ -5,13 +5,14 @@ import OtpInput from "otp-input-react";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { RecaptchaVerifier, signInWithPhoneNumber, signInWithCredential, PhoneAuthProvider } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { RecaptchaVerifier, signInWithPhoneNumber, signInWithCredential, PhoneAuthProvider, ApplicationVerifier, ConfirmationResult, UserCredential } from "firebase/auth";
+import { auth } from "../../../../firebase.config";
+
 
 declare global {
     interface Window {
-        recaptchaVerifier: any;
-        confirmationResult: any;
+        recaptchaVerifier: ApplicationVerifier;
+        confirmationResult: ConfirmationResult;
     }
 }
 
@@ -20,12 +21,13 @@ const Signin = () => {
     const [ph, setPh] = useState("");
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
-    const [user, setUser] = useState<any>(null); // To hold the authenticated user
+    const [user, setUser] = useState<UserCredential | null>(null); // To hold the authenticated user
 
     // Step 1: Initialize reCAPTCHA
     const setupRecaptcha = () => {
         if (!window.recaptchaVerifier) {
             window.recaptchaVerifier = new RecaptchaVerifier(
+                auth,
                 "recaptcha",
                 {
                     size: "invisible",
@@ -36,7 +38,6 @@ const Signin = () => {
                         console.log("Recaptcha expired!");
                     },
                 },
-                auth
             );
         }
     };
@@ -67,7 +68,7 @@ const Signin = () => {
             const confirmationResult = window.confirmationResult;
             const credential = PhoneAuthProvider.credential(confirmationResult.verificationId, otp);
             const result = await signInWithCredential(auth, credential);
-            setUser(result.user);
+            setUser(result);
             setLoading(false);
             console.log("User signed in successfully:", result.user);
         } catch (error) {
@@ -75,6 +76,16 @@ const Signin = () => {
             setLoading(false);
         }
     };
+
+
+    console.log("-----=====>>>>>>>>>>>")
+    console.log("-----=====>>>>>>>>>>>")
+    console.log("-----=====>>>>>>>>>>>")
+    console.log("-----=====>>>>>>>>>>>")
+    console.log("-----=====>>>>>>>>>>>")
+    console.log("-----=====>>>>>>>>>>>")
+    console.log("-----=====>>>>>>>>>>>", user)
+
 
     return (
         <div className="h-screen w-screen bg-circle-login">
