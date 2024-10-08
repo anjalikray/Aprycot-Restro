@@ -17,6 +17,7 @@ model User {
   id         String      @id @default(uuid())
   name       String
   phone      String      @unique
+  email      String
   role       String?
   address    String?
   reviews    Review[]
