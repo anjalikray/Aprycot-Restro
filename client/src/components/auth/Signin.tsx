@@ -1,4 +1,3 @@
-import "./index.css";
 import { Link } from "react-router-dom";
 
 const Signin = () => {
@@ -66,6 +65,12 @@ const Signin = () => {
                                 </button>
                             </div>
                         </form>
+                    </div>
+
+                    <div className="flex justify-center items-center">
+                        <p className="text-slate-500 text-lg ml-2 ">Don't have an account?
+                            <Link to="/signup"><button className="text-lg text-orange-500 ml-3">Click here to sign up.</button></Link>
+                        </p>
                     </div>
                 </div>
 
