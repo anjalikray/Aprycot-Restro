@@ -1,7 +1,9 @@
-import { Routes, Route } from "react-router-dom";
-import Dashboard from "./components/pages/Dashboard/Dashboard";
-import Signin from "./components/pages/Signin/Signin";
-import Header from "./components/pages/Header";
+import {Routes , Route} from 'react-router-dom'
+import Dashboard from './components/dashboard/Dashboard'
+import Signin from './components/auth/Signin'
+import Signup from './components/auth/Signup'
+import Header from './components/pages/Header'
+import ForgotPassword from './components/auth/ForgotPassword'
 
 function App() {
     return (
@@ -9,6 +11,8 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/signin" element={<Signin />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/" element={<Dashboard />} />
             </Routes>
         </>
