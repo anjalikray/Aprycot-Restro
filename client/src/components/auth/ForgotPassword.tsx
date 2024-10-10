@@ -1,9 +1,9 @@
+import React from 'react'
 
-const ForgotPassword = () => {
+
+const ForgotPassword:React.FC = () => {
   return (
-    <div>
-      ForgotPassword
-    </div>
+    <div>ForgotPassword</div>
   )
 }
 

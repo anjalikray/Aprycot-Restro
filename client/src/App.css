@@ -17,3 +17,8 @@ html, body {
   -webkit-transform: translate(62%, -100%) scale(3.5);
   transform: translate(62%, -100%) scale(3.5);
 }
+
+.user-img1 {
+  position: fixed;
+  top: 280px;
+}
