@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {Button} from '@/Components/ui/button';
 
 const Signin = () => {
     return (
@@ -56,7 +57,7 @@ const Signin = () => {
                                     </div>
 
                                     <Link to="/forgot-password">
-                                        <button className="text-lg text-orange-500">Forgot Password?</button>
+                                        <Button className="text-lg text-orange-500">Forgot Password?</Button>
                                     </Link>
                                 </div>
 

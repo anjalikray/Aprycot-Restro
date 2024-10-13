@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
-import {AuthProvider} from "./context/authContext.tsx";
+import {AuthProvider} from "./Context/authContext.tsx";
 
 axios.defaults.baseURL = "http://localhost:8000/api";
 axios.defaults.withCredentials = true;
