@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import {Button} from '@/Components/ui/button';
+import { Label } from "@/Components/ui/label";
+import { Checkbox } from "@/Components/ui/checkbox";
 
 const Signin = () => {
     return (
@@ -48,28 +51,25 @@ const Signin = () => {
 
                                 <div className="flex justify-between mt-3">
                                     <div>
-                                        <input
-                                            className="appearance-none w-4 h-4 mt-2 border border-slate-300 checked:bg-orange-500 focus:outline-none"
-                                            type="checkbox"
-                                        />
-                                        <label className="text-slate-500 text-lg ml-2" htmlFor="">Remember Me</label>
+                                        <Checkbox id="terms" />
+                                        <Label htmlFor="">Remember Me</Label>
                                     </div>
 
                                     <Link to="/forgot-password">
-                                        <button className="text-lg text-orange-500">Forgot Password?</button>
+                                        <Button variant="ghost">Forgot Password?</Button>
                                     </Link>
                                 </div>
 
-                                <button className="bg-orange-500 self-center hover:bg-orange-700 my-5 w-fit justify-center items-center p-2.5 text-white text-md rounded">
+                                <Button>
                                     <span>Sign In</span>
-                                </button>
+                                </Button>
                             </div>
                         </form>
                     </div>
 
                     <div className="flex justify-center items-center">
                         <p className="text-slate-500 text-lg ml-2 ">Don't have an account?
-                            <Link to="/signup"><button className="text-lg text-orange-500 ml-3">Click here to sign up.</button></Link>
+                            <Link to="/signup"><Button variant="ghost">Click here to sign up.</Button></Link>
                         </p>
                     </div>
                 </div>
