@@ -1,9 +1,10 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import {Button} from '@/Components/ui/button';
 import { Label } from "@/Components/ui/label";
 import { Checkbox } from "@/Components/ui/checkbox";
 
-const Signin = () => {
+const Signin:React.FC = () => {
     return (
         <div className="h-screen w-screen bg-circle-login">
             <div className="flex gap-5 justify-center h-screen w-screen">
