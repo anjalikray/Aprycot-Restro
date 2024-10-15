@@ -4,10 +4,30 @@ import { Label } from "@/Components/ui/label";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/Components/ui/input";
+import {toast} from "react-hot-toast";
+import { useAuth } from "@/Context/authContext";
 
 
 
 const SignUp: React.FC = () => {
+    const auth = useAuth();
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const name = formData.get("name") as string;
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+        console.log(email , name , password)
+        try {
+            toast.loading("Signing up...");
+            await auth?.signup(name,email ,password);
+            toast.success("Signed Up Successfully");
+        } catch (error) {
+            console.log(error);
+            toast.error("Signin Failed");
+        }
+    };
+
     return (
         <div className="h-screen w-screen bg-circle-login">
             <div className="flex gap-5 justify-center h-screen w-screen">
@@ -21,18 +41,20 @@ const SignUp: React.FC = () => {
                     </p>
 
                     <div className="ml-10">
-                        <form className="grid gap-4">
+                        <form className="grid gap-4" onSubmit={handleSubmit}>
                             <div className="flex flex-col gap-2">
                                 <div className="grid gap-2">
                                     <Label htmlFor="name">
                                         Name
                                         <span className="text-red-500">*</span>
+                                        
                                     </Label>
 
                                     <Input
                                         // style={{ width: "450px" }}
                                         type="text"
-                                        required
+                                        required={true}
+                                        name="name"
                                     />
                                 </div>
 
@@ -45,7 +67,22 @@ const SignUp: React.FC = () => {
                                     <Input
                                         style={{ width: "450px" }}
                                         type="email"
-                                        required
+                                        required={true}
+                                        name="email"
+                                    />
+                                </div>
+
+                                <div className="grid gap-2">
+                                    <Label htmlFor="password">
+                                        Password
+                                        <span className="text-red-500">*</span>
+                                    </Label>
+
+                                    <Input
+                                        style={{ width: "450px" }}
+                                        type="password"
+                                        required={true}
+                                        name="password"
                                     />
                                 </div>
 
