@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, useContext } from "react";
-import { logoutUser, signinUser, signupUser } from "../Helpers/api.communicators";
+import { logoutUser, signinUser, signupUser } from "../helpers/api.communicators";
 
 type User = {
     id?: number;
