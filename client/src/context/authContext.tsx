@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             // Cookies.set('refreshToken', data.refresh, { expires: 7 }); // 7 days expiry
             // Cookies.set('accessToken', data.access, { expires: data.expired_in_hours / 24 });
             navigate("/user-dashboard");
-            setUser(() => ({ email: data.email, name: data.name, role: data.role }));
+            setUser(() => ({ email: data.email, name: data.name }));
             setIsAuthenticated(true);
         } catch (error: any) {
             // toast.error("Couldn't signin with the provided credentials", { id: "signin" });
