@@ -1,8 +1,10 @@
 import React from "react";
+import Header from "./Header";
 
 const Dashboard: React.FC = () => {
     return (
-        <div className="user-img1">
+        <>
+            <div className="user-img1">
             <svg
                 width="1857"
                 viewBox="0 0 1857 327"
@@ -21,6 +23,8 @@ const Dashboard: React.FC = () => {
                 ></path>
             </svg>
         </div>
+        <Header />
+        </>
     );
 };
 
