@@ -9,10 +9,13 @@ config()
 
 const app = express();
 
+import corsOption from "./config/cors.js";
+app.use(cors(corsOption));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
-app.use(cors({origin:"http://localhost:5174" , credentials: true}));
+// app.use(cors({origin:"http://localhost:5174" , credentials: true}));
 
 app.use("/api", appRouter);
 
